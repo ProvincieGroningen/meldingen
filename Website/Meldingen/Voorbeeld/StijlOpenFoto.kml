@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>StijlOpenFoto</name>
+    <description>StijlOpenFoto</description>
+    <Style id="StijlOpenFoto">
+      <IconStyle>
+        <Icon>
+          <href>http://localhost:2374/Voorbeeld/gesloten.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+  </Document>
+</kml>

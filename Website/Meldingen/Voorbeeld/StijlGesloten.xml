@@ -1,0 +1,7 @@
+﻿<Style id="openMetFoto">
+  <IconStyle>
+    <Icon>
+      <href>http://maps.google.com/mapfiles/kml/paddle/red-stars.png</href>
+    </Icon>
+  </IconStyle>
+</Style>

@@ -1,0 +1,10 @@
+﻿<StyleMap id="exampleStyleMap">
+  <Pair>
+    <key>normal</key>
+    <styleUrl>/Voorbeeld/StijlGesloten.xml</styleUrl>
+  </Pair>
+  <Pair>
+    <key>highlight</key>
+    <styleUrl>/Voorbeeld/StijlGeslotenFoto.xml</styleUrl>
+  </Pair>
+</StyleMap>

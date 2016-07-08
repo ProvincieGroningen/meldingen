@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Meldingen" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=prov137\sqlexpress;Initial Catalog=Meldingen_tmp;Integrated Security=True;Persist Security Info=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MeldingenConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Bijlage" Member="Bijlages">
+    <Type Name="Bijlage">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdMelding" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Naam" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="BestandsNaam" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Mimetype" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimaireFoto" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AangemaaktOp" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AangemaaktDoor" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Melding_Bijlage" Member="Melding" ThisKey="IdMelding" OtherKey="Id" Type="Melding" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Status" Member="Status">
+    <Type Name="Status">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Naam" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Status_Melding" Member="Meldings" ThisKey="Id" OtherKey="IdStatus" Type="Melding" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Bron" Member="Brons">
+    <Type Name="Bron">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Naam" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Bron_Melding" Member="Meldings" ThisKey="Id" OtherKey="IdBron" Type="Melding" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Melding" Member="Meldings">
+    <Type Name="Melding">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdBron" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VerzondenOp" Storage="_AangemaaktOp" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Melder" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Onderwerp" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.Decimal" DbType="Decimal(38,20)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.Decimal" DbType="Decimal(38,20)" CanBeNull="true" />
+      <Column Name="GewijzigdOp" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="GewijzigdDoor" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ToegewezenAan" Type="System.String" CanBeNull="true" />
+      <Column Name="DatumToegewezenAanGewijzigd" Type="System.DateTime" CanBeNull="true" />
+      <Association Name="Melding_Bijlage" Member="Bijlages" ThisKey="Id" OtherKey="IdMelding" Type="Bijlage" />
+      <Association Name="Melding_MeldingHistorie" Member="MeldingHistories" ThisKey="Id" OtherKey="IdMelding" Type="MeldingHistorie" />
+      <Association Name="Melding_Opmerking" Member="Opmerkings" ThisKey="Id" OtherKey="IdMelding" Type="Opmerking" />
+      <Association Name="Melding_BijlageContent" Member="BijlageContents" ThisKey="Id" OtherKey="IdMelding" Type="BijlageContent" />
+      <Association Name="Bron_Melding" Member="Bron" ThisKey="IdBron" OtherKey="Id" Type="Bron" IsForeignKey="true" />
+      <Association Name="Status_Melding" Member="Status" ThisKey="IdStatus" OtherKey="Id" Type="Status" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MeldingHistorie" Member="MeldingHistories">
+    <Type Name="MeldingHistorie">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdMelding" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdBron" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VerzondenOp" Storage="_AangemaaktOp" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Melder" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Onderwerp" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.Decimal" DbType="Decimal(38,20)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.Decimal" DbType="Decimal(38,20)" CanBeNull="true" />
+      <Column Name="GewijzigdOp" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="GewijzigdDoor" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Melding_MeldingHistorie" Member="Melding" ThisKey="IdMelding" OtherKey="Id" Type="Melding" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Opmerking" Member="Opmerkings">
+    <Type Name="Opmerking">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdMelding" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tekst" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="AangemaaktOp" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AangemaaktDoor" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Melding_Opmerking" Member="Melding" ThisKey="IdMelding" OtherKey="Id" Type="Melding" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Log]" Member="Logs">
+    <Type Name="Log">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AangemaaktOp" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Soort" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Omschrijving" Type="System.String" DbType="VarChar(4000) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Bijlage" Member="BijlageContents">
+    <Type Name="BijlageContent">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdMelding" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Naam" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="BestandsNaam" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Inhoud" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ThumbnailSmall" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ThumbnailBig" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Mimetype" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimaireFoto" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AangemaaktOp" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AangemaaktDoor" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Melding_BijlageContent" Member="Melding" ThisKey="IdMelding" OtherKey="Id" Type="Melding" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ToeTeWijzenAan" Member="ToeTeWijzenAans">
+    <Type Name="ToeTeWijzenAan">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Naam" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Configuratie" Member="Configuraties">
+    <Type Name="Configuratie">
+      <Column Member="Id" AutoSync="Never" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" />
+      <Column Name="Naam" Type="System.String" DbType="VARCHAR( 100 )" CanBeNull="false" />
+      <Column Name="Waarde" Type="System.String" DbType="NVARCHAR( MAX )" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

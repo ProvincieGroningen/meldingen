@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Meldingen.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PingUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/ping.ashx</Value>
+    </Setting>
+    <Setting Name="WeesExtentNoordWestLatLon" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">53.72087580525815000000,6.27058637744050600000</Value>
+    </Setting>
+    <Setting Name="WeesExtentZuidOostLatLon" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">53.64148394137216000000,7.13134576698515700000</Value>
+    </Setting>
+    <Setting Name="Mailbox" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ontwikkel-melding@provinciegroningen.nl</Value>
+    </Setting>
+    <Setting Name="StartMailverwerking" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ExchangeServiceUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://clientarray.provinciegroningen.nl/EWS/Exchange.asmx</Value>
+    </Setting>
+    <Setting Name="SMTPServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">clientarray.provinciegroningen.nl</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

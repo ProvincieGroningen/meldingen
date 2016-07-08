@@ -1,0 +1,103 @@
+﻿body {
+    font-family: Corbel;
+    font-size: 14px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#filterDiv {
+    padding: 5px;
+    border-bottom: 1px solid gray;
+    border-top: 5px solid #D4D0C8;
+    background-color: #D4D0C8;
+    height: 30px;
+}
+
+#updatePanelFilter {
+    height: 100%;
+    width: 100%;
+}
+
+#filterStatusDiv {
+    float: right;
+    font-style: italic;
+    color: Maroon;
+    top: 0px;
+    margin-right: 1em;
+}
+#ResetFilter{
+    margin-left: 0.5em;
+}
+
+#filterDiv input[type=text] {
+    border: 1px solid gray;
+}
+
+.filterLabel {
+    margin-left: 0.3em;
+}
+
+#beheerDiv{
+    float: right;
+}
+
+#kaartDiv {
+    position: absolute;
+    top: 55px;
+    left: 5px;
+    width: 800px;
+    height: 600px;
+    background-color: #D4D0C8;
+    border: 1px solid gray;
+}
+
+#detailsDiv {
+    position: absolute;
+    top: 55px;
+    left: 820px;
+    width: 430px;
+    height: 600px;
+    border: 1px solid gray;
+}
+
+#meldingDetails_TextBoxNieuweOpmerking {
+    width: 200px;
+}
+
+.nieuweOpmerkingLeeg {
+    color: Silver;
+    font-style: italic;
+}
+
+.nieuweOpmerkingGevuld {
+    color: #000000;
+    font-style: normal;
+}
+
+.detailsLabel {
+    font-size: small;
+    color: #666666;
+    vertical-align: top;
+}
+
+.textLabel {
+    font-weight: bold;
+}
+
+.smallLink {
+    font-size: small;
+    font-style: italic;
+}
+
+#beheerTable td{
+    vertical-align: top;
+}
+
+.validator{
+    color: red;
+}
+
+.withTooltip{
+    border-bottom: 1px dashed #999!important;
+}

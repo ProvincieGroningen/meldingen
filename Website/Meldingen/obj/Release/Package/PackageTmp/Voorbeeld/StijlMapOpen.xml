@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>StijlMapOpen</name>
+    <description>StijlMapOpen</description>
+    <StyleMap id="StijlMapOpen">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>http://localhost:2374/Voorbeeld/StijlOpen.xml#StijlOpen</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>http://localhost:2374/Voorbeeld/StijlOpenFoto.xml#StijlOpenFoto</styleUrl>
+      </Pair>
+    </StyleMap>
+  </Document>
+</kml>

@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C579E4DD-D36D-45EB-941D-314788BC04E5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Meldingen</RootNamespace>
+    <AssemblyName>Meldingen</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>true</IISExpressUseClassicPipelineMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net1211, Version=2.1.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Common.Logging.Log4Net1211.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Exchange.WebServices">
+      <HintPath>C:\Program Files\Microsoft\Exchange\Web Services\1.2\Microsoft.Exchange.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Beheer.aspx" />
+    <Content Include="Exif\ExifLib.csproj" />
+    <Content Include="Global.asax" />
+    <Content Include="MeldingenOpKaart.aspx" />
+    <Content Include="openlayers\img\blank.gif" />
+    <Content Include="openlayers\img\cloud-popup-relative.png" />
+    <Content Include="openlayers\img\drag-rectangle-off.png" />
+    <Content Include="openlayers\img\drag-rectangle-on.png" />
+    <Content Include="openlayers\img\east-mini.png" />
+    <Content Include="openlayers\img\layer-switcher-maximize.png" />
+    <Content Include="openlayers\img\layer-switcher-minimize.png" />
+    <Content Include="openlayers\img\marker-blue.png" />
+    <Content Include="openlayers\img\marker-gold.png" />
+    <Content Include="openlayers\img\marker-green.png" />
+    <Content Include="openlayers\img\marker.png" />
+    <Content Include="openlayers\img\measuring-stick-off.png" />
+    <Content Include="openlayers\img\measuring-stick-on.png" />
+    <Content Include="openlayers\img\north-mini.png" />
+    <Content Include="openlayers\img\panning-hand-off.png" />
+    <Content Include="openlayers\img\panning-hand-on.png" />
+    <Content Include="openlayers\img\slider.png" />
+    <Content Include="openlayers\img\south-mini.png" />
+    <Content Include="openlayers\img\west-mini.png" />
+    <Content Include="openlayers\img\zoom-minus-mini.png" />
+    <Content Include="openlayers\img\zoom-plus-mini.png" />
+    <Content Include="openlayers\img\zoom-world-mini.png" />
+    <Content Include="openlayers\img\zoombar.png" />
+    <Content Include="openlayers\OpenLayers.js" />
+    <Content Include="openlayers\theme\default\framedCloud.css" />
+    <Content Include="openlayers\theme\default\google.css" />
+    <Content Include="openlayers\theme\default\google.tidy.css" />
+    <Content Include="openlayers\theme\default\ie6-style.css" />
+    <Content Include="openlayers\theme\default\ie6-style.tidy.css" />
+    <Content Include="openlayers\theme\default\img\add_point_off.png" />
+    <Content Include="openlayers\theme\default\img\add_point_on.png" />
+    <Content Include="openlayers\theme\default\img\blank.gif" />
+    <Content Include="openlayers\theme\default\img\close.gif" />
+    <Content Include="openlayers\theme\default\img\drag-rectangle-off.png" />
+    <Content Include="openlayers\theme\default\img\drag-rectangle-on.png" />
+    <Content Include="openlayers\theme\default\img\draw_line_off.png" />
+    <Content Include="openlayers\theme\default\img\draw_line_on.png" />
+    <Content Include="openlayers\theme\default\img\draw_point_off.png" />
+    <Content Include="openlayers\theme\default\img\draw_point_on.png" />
+    <Content Include="openlayers\theme\default\img\draw_polygon_off.png" />
+    <Content Include="openlayers\theme\default\img\draw_polygon_on.png" />
+    <Content Include="openlayers\theme\default\img\editing_tool_bar.png" />
+    <Content Include="openlayers\theme\default\img\move_feature_off.png" />
+    <Content Include="openlayers\theme\default\img\move_feature_on.png" />
+    <Content Include="openlayers\theme\default\img\navigation_history.png" />
+    <Content Include="openlayers\theme\default\img\overview_replacement.gif" />
+    <Content Include="openlayers\theme\default\img\pan-panel-NOALPHA.png" />
+    <Content Include="openlayers\theme\default\img\pan-panel.png" />
+    <Content Include="openlayers\theme\default\img\panning-hand-off.png" />
+    <Content Include="openlayers\theme\default\img\panning-hand-on.png" />
+    <Content Include="openlayers\theme\default\img\pan_off.png" />
+    <Content Include="openlayers\theme\default\img\pan_on.png" />
+    <Content Include="openlayers\theme\default\img\remove_point_off.png" />
+    <Content Include="openlayers\theme\default\img\remove_point_on.png" />
+    <Content Include="openlayers\theme\default\img\ruler.png" />
+    <Content Include="openlayers\theme\default\img\save_features_off.png" />
+    <Content Include="openlayers\theme\default\img\save_features_on.png" />
+    <Content Include="openlayers\theme\default\img\view_next_off.png" />
+    <Content Include="openlayers\theme\default\img\view_next_on.png" />
+    <Content Include="openlayers\theme\default\img\view_previous_off.png" />
+    <Content Include="openlayers\theme\default\img\view_previous_on.png" />
+    <Content Include="openlayers\theme\default\img\zoom-panel-NOALPHA.png" />
+    <Content Include="openlayers\theme\default\img\zoom-panel.png" />
+    <Content Include="openlayers\theme\default\style.css" />
+    <Content Include="openlayers\theme\default\style.tidy.css" />
+    <Content Include="script\Kaart.js" />
+    <Content Include="script\proj4js-combined.js" />
+    <Content Include="script\Projectie.js" />
+    <Content Include="Site.css" />
+    <Content Include="Voorbeeld\gesloten.png" />
+    <Content Include="Voorbeeld\open.png" />
+    <Content Include="Voorbeeld\StijlMapOpen.xml" />
+    <Content Include="Voorbeeld\StijlMapGesloten.xml" />
+    <Content Include="Voorbeeld\StijlOpen.xml" />
+    <Content Include="Voorbeeld\StijlGesloten.xml" />
+    <Content Include="Voorbeeld\StijlGeslotenFoto.xml" />
+    <Content Include="webcontrols\Kaart.ascx" />
+    <Content Include="webcontrols\MeldingDetails.ascx" />
+    <None Include="DataClasses.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>Meldingen</CustomToolNamespace>
+    </None>
+    <None Include="DataClasses.dbml.layout">
+      <DependentUpon>DataClasses.dbml</DependentUpon>
+    </None>
+    <Content Include="GetBijlage.ashx" />
+    <Content Include="GetPrimaireFoto.ashx" />
+    <Content Include="log4net.config" />
+    <Content Include="Ping.ashx" />
+    <None Include="Properties\PublishProfiles\O-site.pubxml" />
+    <None Include="Properties\PublishProfiles\Oplevering.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Voorbeeld\StijlOpenFoto.kml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Beheer.aspx.cs">
+      <DependentUpon>Beheer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Beheer.aspx.designer.cs">
+      <DependentUpon>Beheer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Configuratie.cs" />
+    <Compile Include="DataClasses.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="ExifPropertyItem.cs" />
+    <Compile Include="Exif\ExifIds.cs" />
+    <Compile Include="Exif\ExifIO.cs" />
+    <Compile Include="Exif\ExifReader.cs" />
+    <Compile Include="Exif\ExifTag.cs" />
+    <Compile Include="Exif\JpegInfo.cs" />
+    <Compile Include="GetBijlage.ashx.cs">
+      <DependentUpon>GetBijlage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="GetKML.ashx.cs">
+      <DependentUpon>GetKML.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="GetPrimaireFoto.ashx.cs">
+      <DependentUpon>GetPrimaireFoto.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Maandrapport.cs" />
+    <Compile Include="MailClient.cs" />
+    <Compile Include="MailGatherer.cs" />
+    <Compile Include="MailStorage.cs" />
+    <Compile Include="DataClassesDataContext.cs" />
+    <Compile Include="MeldingenOpKaart.aspx.cs">
+      <DependentUpon>MeldingenOpKaart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MeldingenOpKaart.aspx.designer.cs">
+      <DependentUpon>MeldingenOpKaart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orphan.cs" />
+    <Compile Include="Ping.ashx.cs">
+      <DependentUpon>Ping.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Status.cs" />
+    <Compile Include="webcontrols\Kaart.ascx.cs">
+      <DependentUpon>Kaart.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webcontrols\Kaart.ascx.designer.cs">
+      <DependentUpon>Kaart.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="webcontrols\MeldingDetails.ascx.cs">
+      <DependentUpon>MeldingDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webcontrols\MeldingDetails.ascx.designer.cs">
+      <DependentUpon>MeldingDetails.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GetKML.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Voorbeeld\Voorbeeld.kml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="image\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2374</DevelopmentServerPort>
+          <DevelopmentServerVPath>/BeheerEnOnderhoud</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Style id="StijlOpen">
+  <IconStyle>
+    <Icon>
+      <href>http://localhost:2374/Voorbeeld/open.png</href>
+    </Icon>
+  </IconStyle>
+</Style>

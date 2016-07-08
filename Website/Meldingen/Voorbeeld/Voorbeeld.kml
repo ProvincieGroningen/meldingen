@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Meldingen</name>
+    <description>Filterinstellingen</description>
+    
+    <Placemark>
+      <name>Melding 1013</name>
+      <description>Hier is echt wat aan de hand.</description>
+      <styleUrl>http://localhost:2374/Voorbeeld/StijlMapOpen.kml#StijlMapOpen</styleUrl>
+      <Point>
+        <coordinates> 6.176165,53.270595,0</coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
