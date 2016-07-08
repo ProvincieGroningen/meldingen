@@ -161,7 +161,7 @@ namespace Meldingen
                 bijlage.Mimetype = GetMimeType(fileAttachment);
                 bijlage.Inhoud = new System.Data.Linq.Binary(fileAttachment.Content);
             }
-            if (bijlage.Melding.BijlageContents.Count(b => b.IsPrimaireFoto) == 0)
+            if ((bijlage.Melding.Latitude ?? 0m) == 0 || (bijlage.Melding.Longitude ?? 0m) == 0)
             {
                 try
                 {
