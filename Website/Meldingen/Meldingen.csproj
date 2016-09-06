@@ -228,6 +228,7 @@
     <Compile Include="MailGatherer.cs" />
     <Compile Include="MailStorage.cs" />
     <Compile Include="DataClassesDataContext.cs" />
+    <Compile Include="McMainMelding.cs" />
     <Compile Include="MeldingenOpKaart.aspx.cs">
       <DependentUpon>MeldingenOpKaart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

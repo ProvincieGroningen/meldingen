@@ -24,7 +24,9 @@ namespace Meldingen
             NotStored
         }
 
-        private MailStorage() { }
+        private MailStorage()
+        {
+        }
 
         /// <summary>
         /// Stored the message and it's attachements into database (Bijlage). 
@@ -35,13 +37,81 @@ namespace Meldingen
         {
             try
             {
-                MailStorage mailStorage = new MailStorage();
-                return mailStorage.StoreMessage(message);
+                var mailStorage = new MailStorage();
+                return message.Sender.Address == "info@mcmain.nl"
+                    ? mailStorage.StoreMcMainMessage(message)
+                    : mailStorage.StoreMessage(message);
             }
             catch (Exception ex)
             {
                 log.Error(m => m("Error when processing e-mail message"), ex);
                 return MailStorageResult.NotStored;
+            }
+        }
+
+        private MailStorageResult StoreMcMainMessage(EmailMessage message)
+        {
+            if (message.Body == null
+                || message.Body.BodyType != BodyType.HTML)
+            {
+                return StoreMessage(message);
+            }
+
+            var mcMainMelding = McMainMelding.GenerateFromMessageBody(message.Body.Text);
+            if (mcMainMelding == null)
+            {
+                return StoreMessage(message);
+            }
+
+            using (var context = new DataClassesDataContext())
+            {
+                var melding = new Melding
+                {
+                    Bron = context.Brons.First(b => b.Naam.Equals("E-mail")),
+                    Status = context.Status.First(s => s.Naam.Equals("Open")),
+                    Latitude = mcMainMelding.Lat ?? 0,
+                    Longitude = mcMainMelding.Lon ?? 0,
+                    Onderwerp = message.Subject ?? "",
+                    VerzondenOp = message.DateTimeSent,
+                    Melder = mcMainMelding.Melder ?? "McMain",
+                    GewijzigdDoor = "Mailverwerker",
+                    GewijzigdOp = DateTime.Now
+                };
+
+                message.Load(new PropertySet(ItemSchema.Body));
+                var messageBijlage = new BijlageContent
+                {
+                    AangemaaktDoor = "Mailverwerker",
+                    AangemaaktOp = DateTime.Now,
+                    Inhoud = new System.Data.Linq.Binary(System.Text.Encoding.UTF8.GetBytes(message.Body.Text)),
+                    Mimetype = "text/html",
+                    Naam = "Inhoud emailbericht",
+                    BestandsNaam = "Bericht.html",
+                };
+                melding.BijlageContents.Add(messageBijlage);
+
+                message.Load(new PropertySet(ItemSchema.Attachments));
+                foreach (var attachment in message.Attachments)
+                {
+                    ProcessAttachment(melding, attachment);
+                }
+
+                MailStorageResult result;
+                if ((melding.Latitude == 0) || (melding.Longitude == 0))
+                {
+                    melding.Latitude = Orphan.GetLat;
+                    melding.Longitude = Orphan.GetLon;
+                    result = MailStorageResult.StoredNotGeoReferenced;
+                    log.Warn(m => m("No geotaged photo(s) in mail from:{0} send at:{1}", message.From, message.DateTimeSent));
+                }
+                else
+                {
+                    result = MailStorageResult.StoredGeoReferenced;
+                }
+                setPrimaireFoto(melding);
+                context.Meldings.InsertOnSubmit(melding);
+                context.SubmitChanges();
+                return result;
             }
         }
 
@@ -110,7 +180,7 @@ namespace Meldingen
             foreach (BijlageContent bijlagecontent in melding.BijlageContents)
             {
                 if (bijlagecontent.Melding.Latitude != 0 && bijlagecontent.Melding.Longitude != 0 && bijlagecontent.IsPrimaireFoto == false
-                  && bijlagecontent.Mimetype.Equals("image/png"))
+                    && bijlagecontent.Mimetype.Equals("image/png"))
                 {
                     bijlagecontent.IsPrimaireFoto = true;
                     return;
@@ -130,7 +200,7 @@ namespace Meldingen
         private static void ProcessAttachment(Melding melding, Attachment attachment)
         {
             if (!(attachment is FileAttachment)) return;
-            FileAttachment fileAttachment = (FileAttachment)attachment;
+            FileAttachment fileAttachment = (FileAttachment) attachment;
             fileAttachment.Load();
 
             BijlageContent bijlage = new BijlageContent();
@@ -155,7 +225,7 @@ namespace Meldingen
                 bijlage.ThumbnailBig = getThumb(image, 160);
                 bijlage.Mimetype = "image/png";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 // Geen foto
                 bijlage.Mimetype = GetMimeType(fileAttachment);
@@ -166,11 +236,12 @@ namespace Meldingen
                 try
                 {
                     ExifLib.JpegInfo info = ExifLib.ExifReader.ReadBytes(fileAttachment.Content);
-                    bijlage.Melding.Latitude = (decimal)(info.GpsLatitude[0] + info.GpsLatitude[1] / 60 + info.GpsLatitude[2] / 3600);
-                    bijlage.Melding.Longitude = (decimal)(info.GpsLongitude[0] + info.GpsLongitude[1] / 60 + info.GpsLongitude[2] / 3600);
+                    bijlage.Melding.Latitude = (decimal) (info.GpsLatitude[0] + info.GpsLatitude[1]/60 + info.GpsLatitude[2]/3600);
+                    bijlage.Melding.Longitude = (decimal) (info.GpsLongitude[0] + info.GpsLongitude[1]/60 + info.GpsLongitude[2]/3600);
                 }
-                catch(Exception ex)
-                { //foto kon niet worden gegeotagged
+                catch (Exception ex)
+                {
+                    //foto kon niet worden gegeotagged
                     log.Error(m => m("Photo could not be geotagged"), ex);
                 }
             }
@@ -183,17 +254,17 @@ namespace Meldingen
 
         private static byte[] getThumb(System.Drawing.Image image, int maxHeightAndWidth)
         {
-            decimal ratio = (decimal)image.Height / (decimal)image.Width;
+            decimal ratio = (decimal) image.Height/(decimal) image.Width;
             int height;
             int width;
             if (image.Height > image.Width)
             {
                 height = maxHeightAndWidth;
-                width = (int)Decimal.Truncate(maxHeightAndWidth / ratio);
+                width = (int) Decimal.Truncate(maxHeightAndWidth/ratio);
             }
             else
             {
-                height = (int)Decimal.Truncate(maxHeightAndWidth * ratio);
+                height = (int) Decimal.Truncate(maxHeightAndWidth*ratio);
                 width = maxHeightAndWidth;
             }
             System.Drawing.Image thumbSmall = image.GetThumbnailImage(width, height, null, new IntPtr());
@@ -214,7 +285,7 @@ namespace Meldingen
 
         public static byte[] ReadFully(Stream input)
         {
-            byte[] buffer = new byte[16 * 1024];
+            byte[] buffer = new byte[16*1024];
             using (MemoryStream ms = new MemoryStream())
             {
                 int read;
@@ -225,6 +296,5 @@ namespace Meldingen
                 return ms.ToArray();
             }
         }
-
     }
 }
